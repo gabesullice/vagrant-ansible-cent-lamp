@@ -1,0 +1,23 @@
+---
+
+- name: install mysql and supporting packages
+  yum: name={{ item }} state=present
+  sudo: yes
+  with_items:
+    - mysql
+    - mysql-libs
+    - mysql-server
+
+- name: ensure mysql is started
+  service: name=mysqld state=started enabled=yes
+  sudo: yes
+
+- name: install mysql python package #required for mysql_db tasks
+  yum: name=MySQL-python state=present
+  sudo: yes
+
+- name: create a new database
+  mysql_db: name=default state=present collation=utf8_general_ci
+
+- name: create a database user
+  mysql_user: name=default password=default priv=*.*:ALL host=localhost state=present

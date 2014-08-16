@@ -1,0 +1,37 @@
+---
+
+- name: install apache and apache tools
+  yum: name={{ item }} state=present
+  with_items:
+    - httpd
+    - httpd-devel
+    - httpd-tools
+  sudo: yes
+
+- name: install php and modules
+  yum: name={{ item }} state=present
+  with_items:
+    - php-5.3.3-27.el6_5.1
+    - php-mysql
+    - php-pecl-apc
+    - php-cli
+    - php-mbstring
+    - php-gd
+    - php-xml
+    - php-pear
+    - php-pecl-imagick
+    - php-common
+    - php-devel
+    - php-imap
+    - php-pdo
+    - php-mcrypt
+    - php-soap
+  sudo: yes
+
+- name: ensure apache is running
+  service: name=httpd state=running enabled=yes
+  sudo: yes
+
+- name: set up default index.php test page
+  copy: src=index.php dest=/var/www/html/index.php mode=0664
+  sudo: yes
