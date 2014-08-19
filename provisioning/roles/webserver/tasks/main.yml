@@ -32,6 +32,10 @@
   service: name=httpd state=running enabled=yes
   sudo: yes
 
+- name: configure docroot
+  replace: dest=/etc/httpd/conf/httpd.conf regexp='^DocumentRoot.*' replace='DocumentRoot /vagrant_data'
+  sudo: yes 
+
 - name: set up default index.php test page
   copy: src=index.php dest=/var/www/html/index.php mode=0664
   sudo: yes
