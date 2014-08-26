@@ -11,21 +11,22 @@
 - name: install php and modules
   yum: name={{ item }} state=present
   with_items:
-    - php-5.3.3-27.el6_5.1
-    - php-mysql
-    - php-pecl-apc
-    - php-cli
-    - php-mbstring
-    - php-gd
-    - php-xml
-    - php-pear
-    - php-pecl-imagick
-    - php-common
-    - php-devel
-    - php-imap
-    - php-pdo
-    - php-mcrypt
-    - php-soap
+    - php53u
+    - php53u-pdo
+    - php53u-mbstring
+    - php53u-pecl-apc
+    - php53u-devel
+    - php53u-gd
+    - php53u-soap
+    - php53u-pear
+    - php53u-pecl-imagick
+    - php53u-cli
+    - php53u-imap
+    - php53u-xml
+    - php53u-mysql
+    - php53u-common
+    - php53u-mcrypt
+    - php53u-pecl-xdebug
   sudo: yes
 
 - name: ensure apache is running
