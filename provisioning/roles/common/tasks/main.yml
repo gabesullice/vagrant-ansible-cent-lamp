@@ -8,6 +8,13 @@
   yum: name=vim state=latest
   sudo: yes
 
+- name: checkout latest version of drush 6.x
+  git: repo=https://github.com/drush-ops/drush.git dest=/home/vagrant/drush version=6.x
+
+- name: symlink drush executable to /usr/local/bin
+  file: src=/home/vagrant/drush/drush dest=/usr/local/bin/drush state=link
+  sudo: yes
+
 - name: get ius-release rpm
   get_url: url=http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-13.ius.centos6.noarch.rpm dest=/home/vagrant
 
