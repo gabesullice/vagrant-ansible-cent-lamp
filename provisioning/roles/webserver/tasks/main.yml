@@ -23,14 +23,9 @@
     - php53u-cli
     - php53u-imap
     - php53u-xml
-    - php53u-mysql
     - php53u-common
     - php53u-mcrypt
     - php53u-pecl-xdebug
-  sudo: yes
-
-- name: ensure apache is running
-  service: name=httpd state=running enabled=yes
   sudo: yes
 
 - name: configure docroot
@@ -43,4 +38,12 @@
 
 - name: Add php.ini
   copy: src=php.ini dest=/etc/php.ini mode=0644
+  sudo: yes
+
+- name: ensure xdebug.ini is present
+  copy: src=xdebug.ini dest=/etc/php.d/xdebug.ini mode=0644
+  sudo: yes
+
+- name: ensure apache is running
+  service: name=httpd state=running enabled=yes
   sudo: yes
