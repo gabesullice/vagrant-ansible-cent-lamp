@@ -1,12 +1,17 @@
 ---
 
+- name: ensure default mysql-libs package is absent
+  yum: name=mysql-libs state=absent
+  sudo: yes
+
 - name: install mysql and supporting packages
   yum: name={{ item }} state=present
   sudo: yes
   with_items:
-    - mysql
-    - mysql-libs
-    - mysql-server
+    - mysql55
+    - mysql55-libs
+    - mysql55-server
+    - php53u-mysql
 
 - name: ensure mysql is started
   service: name=mysqld state=started enabled=yes
