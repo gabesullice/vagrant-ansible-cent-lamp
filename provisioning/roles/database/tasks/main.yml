@@ -1,5 +1,9 @@
 ---
 
+- name: ensure default mysql-libs package is absent
+  yum: name=mysql-libs state=absent
+  sudo: yes
+
 - name: install mysql and supporting packages
   yum: name={{ item }} state=present
   sudo: yes
