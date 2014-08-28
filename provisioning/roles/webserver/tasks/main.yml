@@ -32,10 +32,6 @@
   replace: dest=/etc/httpd/conf/httpd.conf regexp='^DocumentRoot.*' replace='DocumentRoot /vagrant_data'
   sudo: yes 
 
-- name: add test vhost
-  copy: src=omnique.com.conf dest=/etc/httpd/conf.d/omnique.com.conf mode=0644
-  sudo: yes
-
 - name: Add php.ini
   copy: src=php.ini dest=/etc/php.ini mode=0644
   sudo: yes
