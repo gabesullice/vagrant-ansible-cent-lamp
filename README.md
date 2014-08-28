@@ -2,15 +2,24 @@
 
 ## Installation
 
-1. First, ensure you've met the [requirements](#Requirements)
-2. Look for the following line in your Vagrantfile. Edit the first path to reflect your project directory.
+* First, ensure you've met the [requirements](#Requirements)
+* Look for the following line in your Vagrantfile. Edit the first path to reflect your project directory.
 ```ruby
 config.vm.synced_folder "~/development/docroot", "/vagrant_data", type: "nfs"
 ```
-3. From this repo's directory, spin up the vagrant box
+* From this repo's directory, spin up the vagrant box
 ```bash
 vagrant up
 ```
+* If the provisioner didn't run, you can run:
+```bash
+vagrant provision
+```
+You can run this as often as you like.
+
+### Setting up a site
+
+Setting up local sites is easy. Sites provisionable by ansible should have an ansible directory at the topmost level (next to .git). Instructions for setting up a new local site can be found in the [e3 skel for ansible](https://github.com/elevatedthird/toolbox/tree/master/d7/skel/ansible).
 
 ## Requirements
 
