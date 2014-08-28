@@ -10,6 +10,5 @@ config.vm.synced_folder "~/development/docroot", "/vagrant_data", type: "nfs"
 
 ## Requirements
 
-[Vagrant](http://docs.vagrantup.com/v2/installation/index.html)
-
-[Ansible](http://docs.ansible.com/intro_installation.html#getting-ansible)
+* [Vagrant](http://docs.vagrantup.com/v2/installation/index.html)
+* [Ansible](http://docs.ansible.com/intro_installation.html#getting-ansible)
