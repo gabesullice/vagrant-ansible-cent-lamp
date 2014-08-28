@@ -4,13 +4,13 @@
 
 1. First, ensure you've met the [requirements](#Requirements)
 1. Look for the following line in your Vagrantfile. Edit it to reflect your projects directory.
-  ```ruby
-  config.vm.synced_folder "~/development/docroot", "/vagrant_data", type: "nfs"
-  ```
+```ruby
+config.vm.synced_folder "~/development/docroot", "/vagrant_data", type: "nfs"
+```
 1. From this repos directory spin up the vagrant box
-  ```bash
-  vagrant up
-  ```
+```bash
+vagrant up
+```
 
 ## Requirements
 
