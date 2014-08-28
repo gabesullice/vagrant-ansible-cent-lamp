@@ -17,7 +17,7 @@ vagrant provision
 ```
 You can run this as often as you like.
 
-### Setting up a site
+### Setting up a new site on your vagrant instance
 
 Setting up local sites is easy. Sites provisionable by ansible should have an ansible directory at the topmost level (next to .git). Instructions for setting up a new local site can be found in the [e3 skel for ansible](https://github.com/elevatedthird/toolbox/tree/master/d7/skel/ansible).
 
