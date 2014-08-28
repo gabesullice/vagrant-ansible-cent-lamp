@@ -2,7 +2,7 @@
 
 ## Installation
 
-* First, ensure you've met the [requirements](#Requirements)
+* First, ensure you've met the [requirements](#requirements)
 * Look for the following line in your Vagrantfile. Edit the first path to reflect your project directory.
 ```ruby
 config.vm.synced_folder "~/development/docroot", "/vagrant_data", type: "nfs"
@@ -15,7 +15,7 @@ vagrant up
 ```bash
 vagrant provision
 ```
-You can run this as often as you like.
+You can run this as often as you'd like.
 
 ### Setting up a new site on your vagrant instance
 
