@@ -1,6 +1,6 @@
 ---
 
-- name: install apache and apache tools
+- name: ensure httpd and httpd tools are present
   yum: name={{ item }} state=present
   with_items:
     - httpd
@@ -8,7 +8,11 @@
     - httpd-tools
   sudo: yes
 
-- name: install php and modules
+- name: ensure httpd is running
+  service: name=httpd state=running enabled=yes
+  sudo: yes
+
+- name: ensure php and modules are present
   yum: name={{ item }} state=present
   with_items:
     - php53u
@@ -31,15 +35,17 @@
 - name: configure docroot
   replace: dest=/etc/httpd/conf/httpd.conf regexp='^DocumentRoot.*' replace='DocumentRoot /vagrant_data'
   sudo: yes 
+  notify:
+    - reload httpd
 
 - name: Add php.ini
   copy: src=php.ini dest=/etc/php.ini mode=0644
   sudo: yes
+  notify:
+    - reload httpd
 
 - name: ensure xdebug.ini is present
   copy: src=xdebug.ini dest=/etc/php.d/xdebug.ini mode=0644
   sudo: yes
-
-- name: ensure apache is running
-  service: name=httpd state=running enabled=yes
-  sudo: yes
+  notify:
+    - reload httpd

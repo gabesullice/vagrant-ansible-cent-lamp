@@ -4,7 +4,7 @@
   yum: name=mysql-libs state=absent
   sudo: yes
 
-- name: install mysql and supporting packages
+- name: ensure mysql and supporting packages are present
   yum: name={{ item }} state=present
   sudo: yes
   with_items:
@@ -17,12 +17,12 @@
   service: name=mysqld state=started enabled=yes
   sudo: yes
 
+- name: ensure my.cnf is present
+  copy: src=my.cnf dest=/etc/my.cnf mode=0644
+  sudo: yes
+  notify:
+    - restart mysqld
+
 - name: install mysql python package #required for mysql_db tasks
   yum: name=MySQL-python state=present
   sudo: yes
-
-- name: create a new database
-  mysql_db: name=default state=present collation=utf8_general_ci
-
-- name: create a database user
-  mysql_user: name=default password=default priv=*.*:ALL host=localhost state=present
