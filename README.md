@@ -2,16 +2,14 @@
 
 ## Installation
 
-* First, ensure you've met the [requirements](#requirements)
-* Look for the following line in your Vagrantfile. Edit the first path to reflect your project directory.
-```ruby
-config.vm.synced_folder "~/development/docroot", "/vagrant_data", type: "nfs"
-```
-* From this repo's directory, spin up the vagrant box
+1. First, ensure you've met the [requirements](#requirements)
+2. Copy the `local.yml.example` file to `local.yml`. This file contains all settings unique to your local machine and is ignored by Git.
+3. Update the settings to match your local setup.
+4. From this repo's directory, spin up the vagrant box
 ```bash
 vagrant up
 ```
-* If the provisioner didn't run, you can run:
+5. If the provisioner didn't run, you can run:
 ```bash
 vagrant provision
 ```
