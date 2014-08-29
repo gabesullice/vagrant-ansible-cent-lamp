@@ -17,6 +17,18 @@ vagrant provision
 ```
 You can run this as often as you'd like.
 
+* Finally, for our other ansible playbooks to run, you will need to add this vagrant instance as an andible host. If `/usr/local/etc/hosts/ansible/hosts` does not already exist. Create it.
+```bash
+sudo mkdir /usr/local/etc/ansible
+sudo touch /usr/local/etc/ansible/hosts
+```
+
+With that files in place, add the following to it.
+```
+[vagrant]
+192.168.33.10
+```
+
 ### Setting up a new site on your vagrant instance
 
 Setting up local sites is easy. Sites provisionable by ansible should have an ansible directory at the topmost level (next to .git). Instructions for setting up a new local site can be found in the [e3 skel for ansible](https://github.com/elevatedthird/toolbox/tree/master/d7/skel/ansible).
