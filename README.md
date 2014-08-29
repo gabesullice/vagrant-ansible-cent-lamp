@@ -9,11 +9,20 @@
 ```bash
 vagrant up
 ```
-5. If the provisioner didn't run, you can run:
+5. If the provisioner didn't run, you can run the following. You can run this as often as you'd like.
 ```bash
 vagrant provision
 ```
-You can run this as often as you'd like.
+6. Finally, for our other ansible playbooks to run, you will need to add this vagrant instance as an andible host. If `/usr/local/etc/hosts/ansible/hosts` does not already exist. Create it.
+```bash
+sudo mkdir /usr/local/etc/ansible
+sudo touch /usr/local/etc/ansible/hosts
+```
+7. With that files in place, add the following to it.
+```
+[vagrant]
+192.168.33.10
+```
 
 ### Setting up a new site on your vagrant instance
 
