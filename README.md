@@ -11,11 +11,10 @@ config.vm.synced_folder "~/development/docroot", "/vagrant_data", type: "nfs"
 ```bash
 vagrant up
 ```
-* If the provisioner didn't run, you can run:
+* If the provisioner didn't run, you can run the following. You can run this as often as you'd like.
 ```bash
 vagrant provision
 ```
-You can run this as often as you'd like.
 
 * Finally, for our other ansible playbooks to run, you will need to add this vagrant instance as an andible host. If `/usr/local/etc/hosts/ansible/hosts` does not already exist. Create it.
 ```bash
@@ -23,7 +22,7 @@ sudo mkdir /usr/local/etc/ansible
 sudo touch /usr/local/etc/ansible/hosts
 ```
 
-With that files in place, add the following to it.
+* With that files in place, add the following to it.
 ```
 [vagrant]
 192.168.33.10
