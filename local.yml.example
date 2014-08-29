@@ -1,0 +1,7 @@
+###
+# Copy this file and remove the ".example" extension to put into use. This file
+# contains local configuration variables that are specific to the hose and
+# shouldn't be tracked in Git.
+###
+
+synced_folder: "/path/to/sites" # Location of all local sites

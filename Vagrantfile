@@ -1,5 +1,14 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+require 'yaml'
+
+# Check if the local settings file exists and load the variables from there. If
+# it's not found we set some defaults.
+if File.exist?('local.yml')
+  localSettings = YAML.load_file('local.yml')
+else
+  localSettings['synced_folder'] = "~/Sites" # Mac assumptions
+end
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
@@ -39,7 +48,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # the path on the host to the actual folder. The second argument is
   # the path on the guest to mount the folder. And the optional third
   # argument is a set of non-required options.
-  config.vm.synced_folder "~/development/docroot", "/vagrant_data", type: "nfs"
+  config.vm.synced_folder localSettings['synced_folder'], "/vagrant_data", type: "nfs"
 
   # Provider-specific configuration so you can fine-tune various
   # backing providers for Vagrant. These expose provider-specific options.
