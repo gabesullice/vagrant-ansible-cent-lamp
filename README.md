@@ -13,12 +13,12 @@ vagrant up
 ```bash
 vagrant provision
 ```
-* Finally, for our other ansible playbooks to run, you will need to add this vagrant instance as an andible host. If `/usr/local/etc/hosts/ansible/hosts` does not already exist. Create it.
+* Finally, for our other ansible playbooks to run, you will need to add this vagrant instance as an ansible host. If `/usr/local/etc/hosts/ansible/hosts` does not already exist. Create it.
 ```bash
 sudo mkdir /usr/local/etc/ansible
 sudo touch /usr/local/etc/ansible/hosts
 ```
-* With that files in place, add the following to it.
+* With that file in place, add the following to it.
 ```
 [vagrant]
 192.168.33.10
