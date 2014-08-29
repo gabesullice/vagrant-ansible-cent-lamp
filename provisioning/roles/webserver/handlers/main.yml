@@ -2,3 +2,4 @@
 
 - name: reload httpd
   service: name=httpd state=reloaded
+  sudo: yes
