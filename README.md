@@ -28,6 +28,26 @@ sudo touch /usr/local/etc/ansible/hosts
 
 Setting up local sites is easy. Sites provisionable by ansible should have an ansible directory at the topmost level (next to .git). Instructions for setting up a new local site can be found in the [e3 skel for ansible](https://github.com/elevatedthird/toolbox/tree/master/d7/skel/ansible).
 
+### Interacting with Vagrant databases
+
+You can interact with databases hosted on Vagrant using a tool like [Sequel Pro](http://www.sequelpro.com/). The documented steps are for Sequel Pro, however they should be similar for your specific tool.
+
+* Click on the "SSH" tab.
+* Provide the credentials:
+  * MySQL Host: 127.0.0.1
+  * Username: root
+  * Password: \<leave empty>
+  * Database: \<leave empty>
+  * Port: \<leave empty>
+  * SSH Host: 192.168.33.10
+  * SSH User: vagrant
+  * SSH Key: \<see [SSH Keys](#ssh-keys) below>
+  * SSH Port: \<leave empty>
+
+#### <a id="ssh-keys"></a> SSH Keys
+
+Ansible is set up to recognize either your computer's pubkey or Vagrant's. Your computer's key is typically found at `~/.ssh/id_rsa`. Vagrant's is typically `~/.vagrant.d/insecure_private_key`. Depending on your own setup, your own paths may be different.
+
 ## Requirements
 
 * [Vagrant](http://docs.vagrantup.com/v2/installation/index.html)
