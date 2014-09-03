@@ -30,6 +30,7 @@
     - php53u-common
     - php53u-mcrypt
     - php53u-pecl-xdebug
+    - php53u-process
   sudo: yes
 
 - name: configure docroot
