@@ -41,12 +41,22 @@ You can interact with databases hosted on Vagrant using a tool like [Sequel Pro]
   * Port: \<leave empty>
   * SSH Host: 192.168.33.10
   * SSH User: vagrant
-  * SSH Key: \<see [SSH Keys](#ssh-keys) below>
+  * SSH Key: \<leave empty. See note below if you experience issues>
   * SSH Port: \<leave empty>
+
+\* Typically, this can be left blank. Sequel Pro is set up to find either your computer's pubkey or Vagrant's. Your computer's key is typically found at `~/.ssh/id_rsa`. Vagrant's is typically `~/.vagrant.d/insecure_private_key`. Depending on your own setup, your own paths may be different and you should change this field accordingly.
 
 #### <a id="ssh-keys"></a> SSH Keys
 
-Ansible is set up to recognize either your computer's pubkey or Vagrant's. Your computer's key is typically found at `~/.ssh/id_rsa`. Vagrant's is typically `~/.vagrant.d/insecure_private_key`. Depending on your own setup, your own paths may be different.
+Our Ansible playbook will add your pubkey at ~/.ssh/id_rsa.pub to the vagrant guest's authorized_keys file by default. This means you can ssh into vagrant with `ssh 192.168.33.10` from any directory as you would any other remote server. For ease of use, you can enable defaults for this SSH connection by adding the following to ~/.ssh/config. Then, you can simply use `sss vagrant` as a handy shorthand.
+
+```
+Host vagrant
+  HostName 192.168.33.10
+  ForwardAgent yes
+  User vagrant
+  IdentityFile ~/.ssh/id_rsa
+```
 
 ## Requirements
 
