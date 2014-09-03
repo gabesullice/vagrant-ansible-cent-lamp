@@ -30,7 +30,7 @@ Setting up local sites is easy. Sites provisionable by ansible should have an an
 
 ### Interacting with Vagrant databases
 
-You can interact with databases hosted on Vagrant using a tool like [Sequel Pro](http://www.sequelpro.com/). The documented steps are for Sequel Pro, however they should be similar for your specific too.
+You can interact with databases hosted on Vagrant using a tool like [Sequel Pro](http://www.sequelpro.com/). The documented steps are for Sequel Pro, however they should be similar for your specific tool.
 
 * Click on the "SSH" tab.
 * Provide the credentials:
