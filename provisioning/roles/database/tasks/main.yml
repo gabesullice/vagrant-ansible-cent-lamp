@@ -3,6 +3,9 @@
 - name: ensure default mysql-libs package is absent
   yum: name=mysql-libs state=absent
   sudo: yes
+  tags:
+    - database
+    - mysql
 
 - name: ensure mysql and supporting packages are present
   yum: name={{ item }} state=present
@@ -12,17 +15,28 @@
     - mysql55-libs
     - mysql55-server
     - php53u-mysql
+  tags:
+    - database
+    - mysql
 
 - name: ensure mysql is started
   service: name=mysqld state=started enabled=yes
   sudo: yes
+    - database
+    - mysql
 
 - name: ensure my.cnf is present
   copy: src=my.cnf dest=/etc/my.cnf mode=0644
   sudo: yes
   notify:
     - restart mysqld
+  tags:
+    - database
+    - mysql
 
 - name: install mysql python package #required for mysql_db tasks
   yum: name=MySQL-python state=present
   sudo: yes
+  tags:
+    - database
+    - mysql

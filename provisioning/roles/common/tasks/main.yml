@@ -3,24 +3,45 @@
 - name: install the latest version of git
   yum: name=git state=latest
   sudo: yes
+  tags: 
+    - common
+    - git
 
 - name: install the latest version of vim
   yum: name=vim state=latest
   sudo: yes
+  tags: 
+    - common
+    - vim
 
 - name: checkout latest version of drush 6.x
   git: repo=https://github.com/drush-ops/drush.git dest=/home/vagrant/drush version=6.x
-
+  tags: 
+    - common
+    - drush
+  
 - name: symlink drush executable to /usr/local/bin
   file: src=/home/vagrant/drush/drush dest=/usr/local/bin/drush state=link
   sudo: yes
+  tags:
+    - common
+    - drush
 
 - name: ensure pubkey is available
   authorized_key: user=vagrant key="{{ lookup('file', '~/.ssh/id_rsa.pub') }}" state=present
+  tags:
+    - common
 
 - name: get ius-release rpm
   get_url: url=http://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-13.ius.centos6.noarch.rpm dest=/home/vagrant
+  tags:
+    - common
+    - ius
 
 - name: install ius-release repository rpm
   command: rpm --replacepkgs -Uvh /home/vagrant/ius-release-1.0-13.ius.centos6.noarch.rpm
   sudo: yes
+  tags:
+    - common
+    - ius
+   
