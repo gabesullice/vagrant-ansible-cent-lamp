@@ -8,7 +8,7 @@
     - mysql
 
 - name: ensure mysql and supporting packages are present
-  yum: name={{ item }} state=present
+  yum: name={{ item }} state=present enablerepo=ius-archive
   sudo: yes
   with_items:
     - mysql55
