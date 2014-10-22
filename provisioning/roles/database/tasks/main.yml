@@ -22,6 +22,7 @@
 - name: ensure mysql is started
   service: name=mysqld state=started enabled=yes
   sudo: yes
+  tags:
     - database
     - mysql
 
