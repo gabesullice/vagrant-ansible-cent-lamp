@@ -37,7 +37,7 @@
     - httpd
 
 - name: ensure php and modules are present
-  yum: name={{ item }} state=present
+  yum: name={{ item }} state=present enablerepo=ius-archive
   with_items:
     - php53u
     - php53u-pdo
