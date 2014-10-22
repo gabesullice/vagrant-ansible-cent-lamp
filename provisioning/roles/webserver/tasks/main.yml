@@ -28,14 +28,14 @@
     - httpd
 
 - name: ensure virtual hosts config is present
-  file: src=nvh.conf dest=/etc/httpd/conf.d/nvh.conf mode=0644
+  copy: src=nvh.conf dest=/etc/httpd/conf.d/nvh.conf mode=0644
   sudo: yes
   notify:
     - reload httpd
   tags:
     - webserver
     - httpd
-    
+
 - name: ensure php and modules are present
   yum: name={{ item }} state=present
   with_items:
