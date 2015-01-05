@@ -21,7 +21,7 @@ sudo touch /usr/local/etc/ansible/hosts
 * With that file in place, add the following to it.
 ```
 [vagrant]
-192.168.33.10
+192.168.50.50
 ```
 
 ### Setting up a new site on your vagrant instance
@@ -39,7 +39,7 @@ You can interact with databases hosted on Vagrant using a tool like [Sequel Pro]
   * Password: \<leave empty>
   * Database: \<leave empty>
   * Port: \<leave empty>
-  * SSH Host: 192.168.33.10
+  * SSH Host: 192.168.50.50
   * SSH User: vagrant
   * SSH Key: \<leave empty. See note below if you experience issues>
   * SSH Port: \<leave empty>
@@ -52,7 +52,7 @@ Our Ansible playbook will add your pubkey at ~/.ssh/id_rsa.pub to the vagrant gu
 
 ```
 Host vagrant
-  HostName 192.168.33.10
+  HostName 192.168.50.50
   ForwardAgent yes
   User vagrant
   IdentityFile ~/.ssh/id_rsa
