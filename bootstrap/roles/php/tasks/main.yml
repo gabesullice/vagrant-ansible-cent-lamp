@@ -1,0 +1,43 @@
+---
+
+- name: ensure php and modules are present
+  apt: name={{ item }} state=present
+  with_items:
+    - php
+    - php-pdo
+    - php-mbstring
+    - php-pecl-apc
+    - php-devel
+    - php-gd
+    - php-soap
+    - php-pear
+    - php-pecl-imagick
+    - php-cli
+    - php-imap
+    - php-xml
+    - php-common
+    - php-mcrypt
+    - php-pecl-xdebug
+    - php-process
+  sudo: yes
+  tags:
+    - webserver
+    - php
+
+- name: Add php.ini
+  copy: src=php.ini dest=/etc/php.ini mode=0644
+  sudo: yes
+  notify:
+    - reload httpd
+  tags:
+    - webserver
+    - php
+
+- name: ensure xdebug.ini is present
+  copy: src=xdebug.ini dest=/etc/php.d/xdebug.ini mode=0644
+  sudo: yes
+  notify:
+    - reload httpd
+  tags:
+    - webserver
+    - php
