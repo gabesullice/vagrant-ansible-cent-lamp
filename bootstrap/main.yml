@@ -1,9 +1,0 @@
----
-- hosts: all
-  remote_user: vagrant
-  gather_facts: no
-  roles: 
-    - common
-    - apache
-    - mysql
-    - php
